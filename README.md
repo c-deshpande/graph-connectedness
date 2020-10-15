@@ -62,6 +62,7 @@ map ( key, line ) =
   emit( VID, new Vertex(0,VID,VID,adjacent) )
   
 Second Map-Reduce job:
+
 map ( key, vertex ) =
   emit( vertex.VID, vertex )   // pass the graph topology
   for n in vertex.adjacent:
@@ -77,6 +78,7 @@ reduce ( vid, values ) =
   emit( m, new Vertex(0,m,vid,adj) )      // new group #
   
 Final Map-Reduce job:
+
 map ( group, value ) =
    emit(group,1)
 
