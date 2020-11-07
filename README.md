@@ -34,11 +34,11 @@ Project done as a part of CSE-6331 Cloud Computing Course at UTA.
 7,6
 <br>
 <br>
-<p style="text-align: justify; text-justify: inter-word;">
+<p align=justify>
 The task is to write a Map-Reduce program that finds the connected components of any undirected graph and prints the size of these connected components. A connected component of a graph is a subgraph of the graph in which there is a path from any two vertices in the subgraph. For the above graph, there are two connected components: one 0,8,9 and another 1,2,3,4,5,6,7. Your program should print the sizes of these connected components: 3 and 7.
 </p>
 <br>
-<p style="text-align: justify; text-justify: inter-word;">
+<p align=justify>
 The following pseudo-code finds the connected components. It assigns a unique group number to each vertex (we are using the vertex ID as the group number), and for each graph edge between Vi and Vj, it changes the group number of these vertices to the minimum group number of Vi and Vj. That way, vertices connected together will eventually get the same minimum group number, which is the minimum vertex ID among all vertices in the connected component. First you need a class to represent a vertex:
 </p>
 
@@ -89,6 +89,6 @@ reduce ( group, values ) =
    emit(group,m)
 ```
 
-<p style="text-align: justify; text-justify: inter-word;">
+<p align=justify>
 The second map-reduce job must be repeated multiple times. For this project, have to repeat it 5 times. A job can be repeated by putting the job in a for-loop. The args vector in the main program has the path names: args[0] is the input graph, args[1] is the intermediate directory, and args[2] is the output. The first Map-Reduce job writes on the directory args[1]+"/f0". The second Map-Reduce job reads from the directory args[1]+"/f"+i and writes in the directory args[1]+"/f"+(i+1), where i is the for-loop index used to repeat the second Map-Reduce job. The final Map-Reduce job reads from args[1]+"/f5" and writes on args[2]. The intermediate results between Map-Reduce jobs must be stored using SequenceFileOutputFormat.
 </p>
